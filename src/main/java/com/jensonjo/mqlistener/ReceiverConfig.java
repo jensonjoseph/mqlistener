@@ -53,10 +53,10 @@ public class ReceiverConfig {
         return new Queue(queueName, false);
     }
 
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
-    }
+//    @Bean
+//    TopicExchange exchange() {
+//        return new TopicExchange(topicExchangeName);
+//    }
 
     @Bean
     public RabbitAdmin rabbitAdmin() {
@@ -67,7 +67,7 @@ public class ReceiverConfig {
     }
 
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
+    Binding binding(Queue queue) {
         //return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
         Binding binding = new Binding(queueName, Binding.DestinationType.QUEUE, topicExchangeName, key, null);
         binding.setAdminsThatShouldDeclare(rabbitAdmin());

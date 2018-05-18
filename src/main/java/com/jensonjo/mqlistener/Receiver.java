@@ -1,13 +1,10 @@
 package com.jensonjo.mqlistener;
 
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.CountDownLatch;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,13 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Receiver implements ChannelAwareMessageListener {
-
-//    private CountDownLatch latch = new CountDownLatch(1);
-
-//    public void receiveMessage(String message) {
-//        System.out.println("Received <" + message + ">");
-//        //latch.countDown();
-//    }
 
     /**
      * Callback for processing a received Rabbit message.
@@ -39,10 +29,5 @@ public class Receiver implements ChannelAwareMessageListener {
         System.out.println("***** Received <" + str + "> *****");
         System.out.println("***** Channel : " + channel.toString() + " *****");
     }
-
-//    public CountDownLatch getLatch() {
-//        return latch;
-//    }
-
 
 }
